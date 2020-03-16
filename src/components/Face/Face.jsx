@@ -1,25 +1,46 @@
 import React, { useState } from "react";
 import styles from "./Face.module.scss";
-import Eyes from "../Eyes";
 import Moustache from "../Moustache";
 import moustache from "../../assets/moustache.png";
 import InputField from "../InputField";
-import ButtonAndInputField from "../ButtonAndInputField";
+import Button from "../Button";
+import Left from "../Left";
+import Right from "../Right";
+import left from "../../assets/left.png";
+import right from "../../assets/right.png";
 
 const Face = props => {
   const [degree, changeDegree] = useState(0);
-  const { img } = props;
+  const { img, imageText } = props;
+  const [isRotated, rotate] = useState(true);
+
+  const rotateAngle = {
+    transform: `rotate(${degree}deg)`
+  };
+
+  const rotateClass = isRotated ? null : rotateAngle;
+
   return (
     <>
       <section className={styles.faceSection}>
-        <img src={img} alt="{img}" className={styles.face} />
-        <Eyes />
+        <img src={img} alt={`${imageText}`} className={styles.face} />
+        <div className={styles.eyeStyles}>
+          <div style={rotateClass}>
+            <Left img={left} />
+          </div>
+          <div style={rotateClass}>
+            <Right img={right} />
+          </div>
+        </div>
         <InputField
           placeHolderText={"Input number here"}
-          handleInput={inputVal => inputVal}
+          handleInput={inputVal => changeDegree(inputVal)}
         />
-        <ButtonAndInputField handleClick{() => changeDegree(degree + 1)} />
-        <Moustache img={moustache} />
+        <Button handleClick={() => rotate(!isRotated)} text="Submit" />
+        <div style={rotateClass} className={styles.moustache}>
+          <Moustache img={moustache} />
+        </div>
+        {console.log(degree)}
       </section>
     </>
   );

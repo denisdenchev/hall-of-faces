@@ -9,7 +9,7 @@ const InputField = props => {
       <input
         type="text"
         placeholder={placeHolderText}
-        onInput={event => handleInput(event.target.value)}
+        onChange={event => handleInput(event.target.value)}
       />
     </>
   );

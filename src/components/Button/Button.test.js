@@ -1,7 +1,7 @@
 import React from "react";
-import Eyes from "./Eyes";
+import Button from "./Button";
 
-describe("Eyes tests", () => {
+describe("Button tests", () => {
   let component;
 
   beforeEach(() => {
