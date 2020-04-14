@@ -9,13 +9,13 @@ import Right from "../Right";
 import left from "../../assets/left.png";
 import right from "../../assets/right.png";
 
-const Face = props => {
+const Face = (props) => {
   const [degree, changeDegree] = useState(0);
   const { img, imageText } = props;
   const [isRotated, rotate] = useState(true);
 
   const rotateAngle = {
-    transform: `rotate(${degree}deg)`
+    transform: `rotate(${degree}deg)`,
   };
 
   const rotateClass = isRotated ? null : rotateAngle;
@@ -34,13 +34,10 @@ const Face = props => {
         </div>
         <InputField
           placeHolderText={"Input number here"}
-          handleInput={inputVal => changeDegree(inputVal)}
+          handleInput={(inputVal) => changeDegree(inputVal)}
         />
         <Button handleClick={() => rotate(!isRotated)} text="Submit" />
-        <div style={rotateClass} className={styles.moustache}>
-          <Moustache img={moustache} />
-        </div>
-        {console.log(degree)}
+        <div style={rotateClass} className={styles.moustache}></div>
       </section>
     </>
   );
